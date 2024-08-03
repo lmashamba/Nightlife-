@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nightlife & Events</title>
+    <link rel="stylesheet" href="css/basic.css">
+</head>
+<body>
+    <header>
+        <h1>Nightlife & Events Guide</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Welcome to the Nightlife & Events Browser</h2>
+            <p>We provide exciting and memorable experiences for nightlife and special events.</p>
+        </section>
+        <!-- Event Section -->
+        <section>
+            <h2>Event QR Code Generator</h2>
+            <p>Select an event to generate a QR code with details about the event.</p>
+
+            <!-- Event Selection -->
+            <select id="event-select">
+                <option value="">--Select an Event--</option>
+                <option value="Nightlife1">Nightlife Event 1</option>
+                <option value="Nightlife2">Nightlife Event 2</option>
+                <option value="Nightlife3">Nightlife Event 3</option>
+            </select>
+            <button id="generate-button">Generate QR Code</button>
+
+            <!-- QR Code Section -->
+            <h3>Event QR Code</h3>
+            <p>Scan the QR code below to get more information about the selected event.</p>
+            <img id="qr-code" alt="QR Code" class="qr-code">
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Nightlife & Events. All rights reserved.</p>
+    </footer>
+    <script>
+       document.getElementById('generate-button').addEventListener('click', () => {
+    const selectedEvent = document.getElementById('event-select').value;
+    if (selectedEvent) {
+        // Generate QR Code URL using an alternative API
+        const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(`Event: ${selectedEvent}`)}`;
+        // Set QR Code image source
+        document.getElementById('qr-code').src = qrCodeUrl;
+    } else {
+        alert('Please select an event.');
+    }
+});
+
+    </script>
+</body>
+</html>
